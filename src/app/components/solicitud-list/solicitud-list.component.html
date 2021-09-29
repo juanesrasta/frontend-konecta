@@ -1,0 +1,101 @@
+<div class="list row">
+	<div class="col-md-3">
+		<h4>Lista de Solicitudes</h4>
+		<ul class="list-group">
+			<li
+			class="list-group-item"
+			*ngFor="let solicitud of solicitudes; let i = index"
+			[class.active]="i == currentIndex"
+			(click)="setActiveSolicitud(solicitud, i)"
+			>
+			{{ solicitud.descripcion }}
+			</li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div *ngIf="currentSolicitud.descripcion">
+			<h4>solicitud</h4>
+			<div>
+				<label><strong>Empleado:</strong></label> {{ currentSolicitud.nombre }}
+			</div>
+			<div>
+				<label><strong>Codigo:</strong></label> {{ currentSolicitud.codigo }}
+			</div>
+			<div>
+				<label><strong>Descripcion:</strong></label>
+				{{ currentSolicitud.descripcion }}
+			</div>
+			<div>
+				<label><strong>Resumen:</strong></label>
+				{{ currentSolicitud.resumen }}
+			</div>
+			
+			<div class="col-md-12">			
+				
+				<form>
+				  <div class="row">
+					<div class="col">
+						<label for="title">Codigo</label>
+						<input 
+							type="text" 
+							class="form-control" 
+							placeholder="Codigo"
+							required
+							[(ngModel)]="solicitud2.codigo"
+							name="codigo"
+						/>
+					</div>
+					<div class="col">
+						<label for="title">Descripcion</label>
+						<input 
+							type="text" 
+							class="form-control" 
+							placeholder="Descripcion"
+							required
+							[(ngModel)]="solicitud2.descripcion"
+							name="descripcion"
+					  >
+					</div>
+					<div class="col">
+						<label for="title">Resumen</label>
+						<input 
+							type="text" 
+							class="form-control" 
+							placeholder="Resumen"
+							required
+							[(ngModel)]="solicitud2.resumen"
+							name="resumen"
+						/>
+						<input type="hidden"  />
+					</div>
+					<div class="col">
+						<label for="title">Empleado</label>
+						<select 
+							class="form-control"
+							name="id_emp"
+							[(ngModel)]="id_emp"
+							required
+						>
+						
+						<option
+							*ngFor="let e of empleados"
+							[value]="e.id"
+						>{{ e.nombre }}</option>
+						</select>
+					</div>
+					<div class="col">
+						<label for="title">Nueva Solicitud</label>
+						<button (click)="guardarSolicitud()"  class="btn btn-success lg">Enviar</button>
+					</div>
+				  </div>
+				</form>				
+				
+			</div>
+		</div>
+
+		<div *ngIf="!currentSolicitud.id_emp">
+			<br />
+			<p>Seleccione una solicitud...</p>
+		</div>
+	</div>
+</div>

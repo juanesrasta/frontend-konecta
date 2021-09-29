@@ -1,0 +1,10 @@
+{
+    "/public/*": {
+        "target": "http://localhost/backend-konecta/",
+		"pathRewrite": {
+			"^/public": ""
+		},
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

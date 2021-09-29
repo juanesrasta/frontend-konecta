@@ -1,0 +1,46 @@
+<form>
+  <div class="row">
+    <div class="col">
+		<label for="title">Codigo</label>
+		<input 
+			type="text" 
+			class="form-control" 
+			placeholder="Codigo"
+			required
+			[(ngModel)]="solicitud.codigo"
+			name="codigo"
+		/>
+    </div>
+    <div class="col">
+		<label for="title">Descripcion</label>
+		<input 
+			type="text" 
+			class="form-control" 
+			placeholder="Descripcion"
+			required
+			[(ngModel)]="solicitud.descripcion"
+			name="descripcion"
+	  >
+    </div>
+	<div class="col">
+		<label for="title">Resumen</label>
+		<input 
+			type="text" 
+			class="form-control" 
+			placeholder="Resumen"
+			required
+			[(ngModel)]="solicitud.resumen"
+			name="resumen"
+		/>
+		<input type="hidden"[(ngModel)]="id_emp" name="id_emp" />
+    </div>
+	<div class="col">
+		<label for="title">Nueva Solicitud</label>
+		<button (click)="guardarSolicitud()"  class="btn btn-success lg">Enviar Solicitud</button>
+    </div>
+  </div>
+</form>
+<div *ngIf="submitted">
+    <h4>Tutorial was submitted successfully!</h4>
+    <button class="btn btn-success" (click)="nuevaSolicitud()">Add</button>
+</div>

@@ -1,0 +1,50 @@
+<div>
+	<div class="submit-form">
+		<div *ngIf="!submitted">
+			<div class="form-group">
+				<label for="title">Nombre</label>
+				<input
+				  type="text"
+				  class="form-control"
+				  id="title"
+				  required
+				  [(ngModel)]="empleado.nombre"
+				  name="nombre"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="fecha_ingreso">Fechaingreso</label>
+				<div class="input-group">
+					<input
+					  class="form-control"
+					  id="fecha_ingreso"
+					  required
+					  [(ngModel)]="empleado.fecha_ingreso" ngbDatepicker #d="ngbDatepicker"
+					  name="fecha_ingreso"
+					/>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+					</div>
+				</div>
+			</div>		  
+			<div class="form-group">
+				<label for="Salario">Salario</label>
+				<input
+				  class="form-control"
+				  id="Salario"
+				  type="number"
+				  required
+				  [(ngModel)]="empleado.salario"
+				  name="Salario"
+				/>
+			</div>
+
+			<button (click)="guardarEmpleado()" class="btn btn-success">Enviar</button>
+		</div>
+
+		<div *ngIf="submitted">
+			<h4>¡El Empleado se envió correctamente!</h4>
+			<button class="btn btn-success" (click)="nuevoEmpleado()">Agregar Nuevo</button>
+		</div>
+	</div>
+</div>

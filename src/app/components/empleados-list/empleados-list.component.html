@@ -1,0 +1,24 @@
+<div class="list row">
+  <div class="col-md-12">
+    <span class="col-md-6">
+		<h4>Lista de empleados</h4>
+	</span>
+	<span class="col-md-4" style="text-align:right;">
+		<a class="nav-link" routerLink="/add">Agregar Nuevo</a>
+	</span>
+    <table class="table">
+		<thead class="thead-dark">
+		<tr>
+			<th>Nombre</th>
+			<th>Fecha Ingreso</th>
+			<th>Salario</th>
+		</tr>
+		</thead>
+		<tr  *ngFor="let empleado of empleados; let i = index">
+        <td>{{ empleado.nombre }}</td>
+        <td>{{ empleado.fecha_ingreso }}</td>
+        <td>{{ empleado.salario }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
